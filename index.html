@@ -57,13 +57,13 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
 .sh{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
 .sh-act{color:var(--gold);cursor:pointer;font-size:10px;}
 
-/* MOTIV CARD */
-.motiv-wrap{margin:0 22px 14px;background:rgba(201,168,76,0.14);border:1px solid rgba(201,168,76,0.3);border-radius:14px;padding:16px 18px 12px;position:relative;overflow:hidden;}
-.motiv-wrap::before{content:'"';position:absolute;top:-10px;left:6px;font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:300;color:rgba(201,168,76,0.07);pointer-events:none;}
-.motiv-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:#f0dfa0;line-height:1.65;position:relative;z-index:1;min-height:18px;text-shadow:0 1px 8px rgba(0,0,0,0.5);}
-.motiv-by{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
-.motiv-lbl{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);opacity:0.5;}
-.motiv-refresh{font-size:10px;color:var(--gold);opacity:0.6;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;letter-spacing:0.08em;}
+/* YENI MOTIV CARD (DAHA BÜYÜK VE GÖSTERİŞLİ) */
+.motiv-wrap{margin:0 22px 18px;background:radial-gradient(circle at top left, rgba(201,168,76,0.15), transparent 80%), var(--s1);border:1px solid rgba(201,168,76,0.4);border-radius:16px;padding:24px 22px 16px;position:relative;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.motiv-wrap::before{content:'"';position:absolute;top:-10px;left:10px;font-family:'Cormorant Garamond',serif;font-size:110px;font-weight:300;color:rgba(201,168,76,0.12);pointer-events:none;line-height:1;}
+.motiv-txt{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;font-style:italic;color:#fff2c8;line-height:1.4;position:relative;z-index:1;min-height:24px;text-shadow:0 2px 10px rgba(0,0,0,0.8);text-align:center;margin-bottom:18px;}
+.motiv-by{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,168,76,0.15);padding-top:14px;}
+.motiv-lbl{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);opacity:0.7;}
+.motiv-refresh{font-size:11px;color:var(--gold);opacity:0.8;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;letter-spacing:0.08em;transition:opacity 0.2s;}
 .motiv-refresh:hover{opacity:1;}
 
 /* RING OVERVIEW */
@@ -249,11 +249,11 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
     </div>
   </div>
 
-  <div class="motiv-wrap" style="margin-top:12px;">
+  <div class="motiv-wrap" style="margin-top:16px;">
     <div class="motiv-txt" id="motivTxt"><span class="spin"></span>Yükleniyor...</div>
     <div class="motiv-by">
-      <span class="motiv-lbl">✦ Claude</span>
-      <button class="motiv-refresh" id="motivRefBtn" onclick="refreshMotiv()">↻ Yenile</button>
+      <span class="motiv-lbl">✦ Günün Sözü</span>
+      <button class="motiv-refresh" id="motivRefBtn" onclick="refreshMotiv()">↻ Değiştir</button>
     </div>
   </div>
 
@@ -980,7 +980,7 @@ async function genMotiv(){
     document.getElementById('motivTxt').textContent=fb;
     await ss('motiv_'+TODAY(),fb);
   }
-  document.getElementById('motivRefBtn').textContent='↻ Yenile';mLoading=false;
+  document.getElementById('motivRefBtn').textContent='↻ Değiştir';mLoading=false;
 }
 async function refreshMotiv(){
   await ss('motiv_'+TODAY(),null);genMotiv();
