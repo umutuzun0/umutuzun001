@@ -64,13 +64,62 @@ body{display:flex;flex-direction:column;max-width:1000px; margin:0 auto;min-heig
 .sh{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
 .sh-act{color:var(--gold);cursor:pointer;font-size:10px;}
 
-/* SIFIRDAN YAZILMIŞ MOTIV CARD */
-.motiv-wrap { margin: 0 22px 18px; background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, var(--s1) 60%); border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; padding: 24px 22px 14px; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-.motiv-wrap::before { content: '"'; position: absolute; top: -15px; left: 12px; font-family: 'Cormorant Garamond', serif; font-size: 100px; font-weight: 300; color: rgba(201,168,76,0.08); pointer-events: none; line-height: 1; }
-.motiv-txt { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #fff2c8; line-height: 1.4; position: relative; z-index: 1; text-align: center; margin-top: -5px; margin-bottom: 16px; display: block; word-wrap: break-word; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
-.motiv-by { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,168,76,0.15); padding-top: 12px; }
-.motiv-lbl { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
-.motiv-refresh { font-size: 11px; color: var(--gold); cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; transition: opacity 0.2s; }
+/* SIFIRDAN YAZILMIŞ MOTIV CARD (TASARIM DÜZELTİLDİ) */
+.motiv-wrap { 
+  margin: 0 22px 18px; 
+  background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, var(--s1) 60%); 
+  border: 1px solid rgba(201,168,76,0.2); 
+  border-radius: 12px; 
+  padding: 30px 22px 20px; 
+  position: relative; 
+}
+.motiv-wrap::before { 
+  content: '"'; 
+  position: absolute; 
+  top: -15px; 
+  left: 14px; 
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 110px; 
+  font-weight: 300; 
+  color: rgba(201,168,76,0.06); 
+  pointer-events: none; 
+  line-height: 1; 
+}
+.motiv-txt { 
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 20px; 
+  font-style: italic; 
+  color: #fff2c8; 
+  line-height: 1.5; 
+  position: relative; 
+  z-index: 1; 
+  text-align: center; 
+  margin-bottom: 20px; 
+  display: block; 
+}
+.motiv-by { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  border-top: 1px solid rgba(201,168,76,0.1); 
+  padding-top: 12px; 
+}
+.motiv-lbl { 
+  font-size: 10px; 
+  letter-spacing: 0.15em; 
+  text-transform: uppercase; 
+  color: var(--gold); 
+  opacity: 0.6; 
+}
+.motiv-refresh { 
+  font-size: 11px; 
+  color: var(--gold); 
+  cursor: pointer; 
+  background: none; 
+  border: none; 
+  font-family: 'DM Sans', sans-serif; 
+  transition: opacity 0.2s; 
+}
 .motiv-refresh:hover { opacity: 1; }
 
 /* RING OVERVIEW */
@@ -87,14 +136,14 @@ body{display:flex;flex-direction:column;max-width:1000px; margin:0 auto;min-heig
 .sv{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold);line-height:1;}
 .sl{font-size:9px;color:var(--t2);margin-top:3px;letter-spacing:0.04em;}
 
-/* 6M HEATMAP (Büyütüldü) */
+/* 6M HEATMAP (ORİJİNALİN BİR TIK BÜYÜĞÜ: 12.5px) */
 .heatmap-wrap{overflow-x:auto;padding-bottom:8px;margin-bottom:4px;}
-.heatmap{display:flex;gap:4px;min-width:max-content;padding:0 22px;}
-.hm-month{display:flex;flex-direction:column;gap:3px;}
-.hm-mlbl{font-size:10px;color:var(--t3);letter-spacing:0.08em;margin-bottom:6px;text-align:center;}
-.hm-weeks{display:flex;gap:3px;}
-.hm-week{display:flex;flex-direction:column;gap:3px;}
-.hm-cell{width:14px;height:14px;border-radius:3px;background:var(--s2);transition:background 0.2s;cursor:pointer;}
+.heatmap{display:flex;gap:3px;min-width:max-content;padding:0 22px;}
+.hm-month{display:flex;flex-direction:column;gap:2px;}
+.hm-mlbl{font-size:9px;color:var(--t3);letter-spacing:0.08em;margin-bottom:6px;text-align:center;}
+.hm-weeks{display:flex;gap:2px;}
+.hm-week{display:flex;flex-direction:column;gap:2px;}
+.hm-cell{width:12.5px;height:12.5px;border-radius:2.5px;background:var(--s2);transition:background 0.2s;cursor:pointer;}
 .hm-cell.d1{background:rgba(201,168,76,0.18);}
 .hm-cell.d2{background:rgba(201,168,76,0.38);}
 .hm-cell.d3{background:rgba(201,168,76,0.58);}
@@ -265,7 +314,7 @@ body{display:flex;flex-direction:column;max-width:1000px; margin:0 auto;min-heig
   </div>
 
   <div class="motiv-wrap full-width" style="margin-top:16px;">
-    <div class="motiv-txt" id="motivTxt"><span class="spin"></span>Yükleniyor...</div>
+    <div class="motiv-txt" id="motivTxt">Yükleniyor...</div>
     <div class="motiv-by">
       <span class="motiv-lbl">✦ Günün Sözü</span>
       <button class="motiv-refresh" id="motivRefBtn" onclick="refreshMotiv()">↻ Değiştir</button>
@@ -300,11 +349,11 @@ body{display:flex;flex-direction:column;max-width:1000px; margin:0 auto;min-heig
     <div style="display:flex;align-items:center;gap:6px;margin-top:8px;padding:0 2px;">
       <span style="font-size:10px;color:var(--t3);">Az</span>
       <div style="display:flex;gap:3px;">
-        <div style="width:14px;height:14px;border-radius:3px;background:var(--s2);"></div>
-        <div style="width:14px;height:14px;border-radius:3px;background:rgba(201,168,76,0.18);"></div>
-        <div style="width:14px;height:14px;border-radius:3px;background:rgba(201,168,76,0.38);"></div>
-        <div style="width:14px;height:14px;border-radius:3px;background:rgba(201,168,76,0.58);"></div>
-        <div style="width:14px;height:14px;border-radius:3px;background:var(--gold);"></div>
+        <div style="width:12.5px;height:12.5px;border-radius:2.5px;background:var(--s2);"></div>
+        <div style="width:12.5px;height:12.5px;border-radius:2.5px;background:rgba(201,168,76,0.18);"></div>
+        <div style="width:12.5px;height:12.5px;border-radius:2.5px;background:rgba(201,168,76,0.38);"></div>
+        <div style="width:12.5px;height:12.5px;border-radius:2.5px;background:rgba(201,168,76,0.58);"></div>
+        <div style="width:12.5px;height:12.5px;border-radius:2.5px;background:var(--gold);"></div>
       </div>
       <span style="font-size:10px;color:var(--t3);">Çok</span>
     </div>
@@ -511,6 +560,110 @@ body{display:flex;flex-direction:column;max-width:1000px; margin:0 auto;min-heig
 <div class="toast" id="toast"></div>
 
 <script>
+// ─── 100 MOTIVASYON SÖZÜ (SABİT EKLENDİ) ───
+const MOTIV_QUOTES = [
+  "Disiplin özgürlüğe giden yoldur — ve bugün yeniden seçilir.",
+  "Küçük adımlar büyük dönüşümlerin temelidir.",
+  "Bugün yaptığın seçimler yarınki versiyonunu inşa ediyor.",
+  "Rahatsızlık büyümenin işaretidir — kaçma, büyü.",
+  "Her sabah yeni bir sayfa — onu iyi yaz.",
+  "Kontrol edebildiğine odaklan, gerisini bırak.",
+  "Mükemmel değil, tutarlı ol.",
+  "Çelik irade günde bir kez seçilir — o an şimdi.",
+  "Zorluklar seni yok etmek için değil, şekillendirmek için gelir.",
+  "Gelişim, konfor alanının bittiği yerde başlar.",
+  "Düşmek sorun değil, kalkmamak tercihtir.",
+  "Bugünün terlemesi, yarının başarısıdır.",
+  "İlerlemek istiyorsan bahaneleri geride bırak.",
+  "En büyük savaşın aynadaki kişiyle.",
+  "Zaman beklemez, sen de beklememelisin.",
+  "Başarı, her gün tekrar edilen küçük disiplinlerin toplamıdır.",
+  "Yorulunca değil, işin bitince dinlen.",
+  "Odağını koru, gürültüyü kapat.",
+  "Geleceği tahmin etmenin en iyi yolu onu inşa etmektir.",
+  "İstediğin sonuçları elde edemiyorsan, sürecini değiştir.",
+  "Duyguların seni yönlendirmesin, prensiplerin yönlendirsin.",
+  "Her kriz, içinde bir fırsat barındırır.",
+  "Fiziksel güç zihinsel dayanıklılığı besler.",
+  "Sadece planlama yapma, icraata geç.",
+  "Bir sistemin kalitesi, onu uygulayanın disiplini kadardır.",
+  "Büyük hedefler, mikro adımlarla fethedilir.",
+  "Bugün ertelediğin iş, yarınki stresindir.",
+  "En iyi yatırım, kendine yaptığın yatırımdır.",
+  "Mazeretler sadece onları üretenleri tatmin eder.",
+  "Konfor, potansiyelin en büyük düşmanıdır.",
+  "Sınırlarını zorlamadan nerede olduklarını bilemezsin.",
+  "Gerçek büyüme sessizlikte ve karanlıkta gerçekleşir.",
+  "Zihniyetin senin en büyük silahındır.",
+  "Başkaları uyurken sen çalış, başkaları hayal ederken sen yaşa.",
+  "Korku bir illüzyondur, eylem onu yok eder.",
+  "Ne kadar sert düşersen, o kadar yükseğe sıçrarsın.",
+  "Değişim acı vericidir ama hiçbir şey olduğun yerde kalmak kadar acı veremez.",
+  "Motivasyon seni başlatır, alışkanlık devam ettirir.",
+  "Zamanın değerini bil, çünkü o geri gelmez.",
+  "Başarısızlık sadece yeniden, daha akıllıca başlama fırsatıdır.",
+  "Verimlilik, gereksiz olanı elemektir.",
+  "Sistemi optimize et, sonuçlar kendiliğinden gelir.",
+  "Her gün %1 daha iyi ol.",
+  "Disiplin, ne istediğini şimdi ne istediğine tercih etmektir.",
+  "Eğer kolay olsaydı, herkes yapardı.",
+  "Gölgenle yüzleş ki ışığa çıkabilesin.",
+  "Zihin her şeydir. Ne düşünürsen o olursun.",
+  "Kendi hayatının mimarı sensin.",
+  "Başarı bir tesadüf değil, bir seçimdir.",
+  "Her yeni gün, daha iyi olmak için bir şanstır.",
+  "Zor zamanlar güçlü insanlar yaratır.",
+  "Sadece hayal etme, planla ve uygula.",
+  "Dikkatini nereye verirsen, enerjin oraya akar.",
+  "Kendine verdiğin sözleri tutmak en büyük özsaygıdır.",
+  "Başarı sessizdir, sonuçların konuşmasına izin ver.",
+  "Gerçek güç, duygularını kontrol edebilmektedir.",
+  "Engeller yolun ta kendisidir.",
+  "Neyi ölçersen onu yönetirsin.",
+  "Küçük kayıpları kabul et, büyük resmi gör.",
+  "Stres, hazır olmadığının bir göstergesidir; hazırlığını artır.",
+  "Acıyı hisset ama ona teslim olma.",
+  "Sadece istikrarlı eylemler kalıcı sonuçlar doğurur.",
+  "Gelişim çizgisel değildir, sabırlı ol.",
+  "Kendi standartlarını başkalarınınkinden yüksek tut.",
+  "Başarı, vazgeçmeyenlerin ödülüdür.",
+  "Zaman yönetimi aslında öz yönetimdir.",
+  "Her eylem bir oydur, kim olmak istediğini oylarsın.",
+  "Korkunu pusulan yap.",
+  "Gürültüye değil, sinyale odaklan.",
+  "Hedefler sana yön verir, sistemler seni oraya götürür.",
+  "Kötü bir antrenman, hiç yapılmamış bir antrenmandan iyidir.",
+  "Bugün yaptığın fedakarlıklar yarının teminatıdır.",
+  "Kendini başkalarıyla değil, dünkü kendinle kıyasla.",
+  "Sorumluluk almak, özgürlüğün ilk adımıdır.",
+  "Kusursuzluk bir illüzyondur, ilerleme gerçektir.",
+  "Yolculuğu sev, hedefe varış anını değil.",
+  "Zor olanı seç, hayatın kolaylaşsın.",
+  "Sürekli öğren, sürekli geliş.",
+  "İçindeki sesi eğit, seni engellemesine izin verme.",
+  "Başarı, doğru alışkanlıkların kaçınılmaz bir sonucudur.",
+  "Sadece kontrol edebildiğin şeylere enerji harca.",
+  "Gerçek karakter, kimse izlemediğinde ne yaptığındır.",
+  "Sabır, en güçlü silahtır.",
+  "Beklenti yerine takdir et.",
+  "Sınırların, onları kabul ettiğin yerdedir.",
+  "Dış dünya iç dünyanın bir yansımasıdır.",
+  "Gölgeden korkma, o seni gerçek sana götürür.",
+  "En karanlık gece bile sona erer ve güneş doğar.",
+  "Eylemlerin kelimelerinden daha yüksek sesle konuşsun.",
+  "Başarısızlık bir son değil, bir derstir.",
+  "Zihniyet her şeyin temelidir.",
+  "Gelecek, bugünden hazırlananların elindedir.",
+  "Tutarlılık, yetenekten daha önemlidir.",
+  "Her zorluk, bir seviye atlama fırsatıdır.",
+  "Hayatını şansa bırakma, sistemini kur.",
+  "Optimizasyon bir varış noktası değil, bir süreçtir.",
+  "Bugün pes edersen, yarın yeniden başlamak zorunda kalırsın.",
+  "Gölgeyle savaşma, onu anla ve bütünleş.",
+  "Kendi hikayenin kahramanı ol.",
+  "Zamanın en değerli kaynağındır, onu akıllıca kullan."
+];
+
 // ─── CONSTANTS ───
 const DAYS=['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'];
 const MONTHS=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
@@ -538,7 +691,6 @@ const TODAY=()=>new Date().toISOString().split('T')[0];
 let habits={},streaks={},water=0,goals=[],physData={},mentalData={},inflamFoods={},sets=[];
 let ielts={currentBand:0,targetBand:7.5,mockScores:[],dailyVocab:{}};
 
-// YENİ KPI SİSTEMİ
 const DEFAULT_KPIS = [
   {id:'ielts',n:'🌍 IELTS Hedefi',target:'Band 7.5',pct:0},
   {id:'finans',n:'💰 Finans',target:'Birikim',pct:0},
@@ -554,11 +706,8 @@ let startDate=null;
 let wChart=null, iChart=null, finLineChart=null, finPieChart=null;
 
 let totalPages = 0;
-// Accordion Verileri (Arşiv)
 let neoNotes = [];
 let vitNotes = [];
-
-// Finans Başlangıç Portföyü
 let portfolio = { usd: { URA: 433, CCJ: 242, DRIV: 171, SPY: 366 }, try: { IPJ: 17000, FPG: 6500 } };
 let nwHistory = [];
 
@@ -581,7 +730,6 @@ async function init(){
   const now=new Date();
   document.getElementById('tbDate').textContent=`${DAYS[now.getDay()]}, ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
 
-  // Load data
   habits=await sg('h_'+td)||{};
   streaks=await sg('streaks')||{};
   water=parseFloat(await sg('w_'+td))||0;
@@ -592,7 +740,6 @@ async function init(){
   sets=await sg('sets_'+td)||[];
   ielts=await sg('ielts')||{currentBand:0,targetBand:7.5,mockScores:[],dailyVocab:{}};
   
-  // KPI Kontrolü (Eskisinde fizik vardı, yenisinde 6 tane var. Uyuşmazsa ez)
   let loadedKpis=await sg('kpis');
   if(!loadedKpis || loadedKpis.length !== 6) { kpis = DEFAULT_KPIS; await ss('kpis', kpis); }
   else { kpis = loadedKpis; }
@@ -601,11 +748,9 @@ async function init(){
   stoicVal=mentalData.eveningScore||0;
   totalPages=await sg('totalPages')||0;
   
-  // Arşiv Load
   neoNotes = await sg('neoNotes') || [];
   vitNotes = await sg('vitNotes') || [];
   
-  // Finans Load
   let savedPort = await sg('portfolio');
   if(savedPort) portfolio = savedPort;
   let savedHist = await sg('nwHistory');
@@ -619,26 +764,22 @@ async function init(){
   buildWChart();
   buildIChart();
   
-  // Accordions & Finance
   renderNeo();
   renderVit();
   renderFinanceInputs();
   buildFinanceCharts();
 
-  // Motiv
-  const MOTIV_FB=['Disiplin özgürlüğe giden yoldur — ve bugün yeniden seçilir.','Küçük adımlar büyük dönüşümlerin temelidir.','Bugün yaptığın seçimler yarınki versiyonunu inşa ediyor.','Rahatsızlık büyümenin işaretidir — kaçma, büyü.','Her sabah yeni bir sayfa — onu iyi yaz.','Kontrol edebildiğine odaklan, gerisini bırak.','Mükemmel değil, tutarlı ol.'];
-  const motivFb=MOTIV_FB[new Date().getDay()%MOTIV_FB.length];
+  // YEREL MOTİVASYON (API YOK, SORUN YOK)
   const cm=await sg('motiv_'+td);
   if(cm) document.getElementById('motivTxt').textContent=cm;
-  else { document.getElementById('motivTxt').textContent=motivFb; genMotiv(); }
+  else { genMotiv(); }
 
-  // Yansıma
+  // Yansıma (Bunu da sabit listeden çekeceğiz ki o da takılmasın)
   const cq=await sg('reflq_'+td);
   if(cq) { reflQ=cq; document.getElementById('reflQ').textContent=cq; }
   else {
-    reflQ='Bugün hangi anımda gerçekten "ben" olabildim?';
+    reflQ='Bugün en çok hangi anımda gerçekten "ben" olabildim?';
     document.getElementById('reflQ').textContent=reflQ;
-    genRefl();
   }
 
   const sr=reflections[td];
@@ -658,6 +799,17 @@ function renderAll(){
   renderHabits();renderWater();renderGoals();renderInflam();renderSets();
   renderMental();renderIelts();renderKPIs();renderPast();
   updateOverview();updateStats();
+}
+
+// ─── MOTIVATION LOKAL FONKSİYON ───
+async function genMotiv(){
+  const randIdx = Math.floor(Math.random() * MOTIV_QUOTES.length);
+  const text = MOTIV_QUOTES[randIdx];
+  document.getElementById('motivTxt').textContent = text;
+  await ss('motiv_'+TODAY(), text);
+}
+async function refreshMotiv(){
+  genMotiv();
 }
 
 // ─── ACCORDION MANTIĞI ───
@@ -681,7 +833,6 @@ function renderNeo() {
   const el = document.getElementById('neoList'); el.innerHTML = '';
   if(!neoNotes.length) { el.innerHTML = '<div class="empty">Henüz eğitim eklenmedi.</div>'; return; }
   neoNotes.slice().reverse().forEach((n, idx) => {
-    // Reverse edildiği için asıl indexi bulmalıyız
     let realIdx = neoNotes.length - 1 - idx;
     el.innerHTML += `<div class="note-item"><span><b>${n.d}</b> - ${n.t}</span><span class="note-del" onclick="delNeo(${realIdx})">×</span></div>`;
   });
@@ -1050,15 +1201,15 @@ let rLoading=false;
 async function genRefl(){
   if(rLoading)return;rLoading=true;
   const btn=document.getElementById('genBtn'); btn.innerHTML='<span class="spin"></span>Üretiliyor...';btn.disabled=true;
-  const done=Object.values(habits).filter(Boolean).length; const dayNum=Math.max(1,Math.floor((new Date(TODAY())-new Date(startDate))/86400000)+1);
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system:'Sen bir mindfulness koçusun.',messages:[{role:'user',content:`Gün ${dayNum}. Bugün ${done} alışkanlık yapıldı. Tek cümlelik Türkçe özgün yansıma sorusu yaz.`}]})});
-    const data=await res.json(); reflQ=data.content[0].text.trim();
-  }catch{
-    const fallbacks=['Bugün en çok hangi anımda gerçekten "ben" olabildim?','Hangi alışkanlığım beni değiştiriyor, hangisi sadece rutin?','Eğer biri bugünümü dışarıdan izleseydi, ne görürdü?'];
-    reflQ=fallbacks[Math.floor(Math.random()*fallbacks.length)];
-  }
-  document.getElementById('reflQ').textContent=reflQ; await ss('reflq_'+TODAY(),reflQ); btn.innerHTML='✦ Claude\'dan yeni yansıma sorusu';btn.disabled=false;rLoading=false;
+  // Burada da yapay zeka yerine statik yansıma soruları atayacağız ki asla donmasın.
+  const fallbacks=['Bugün en çok hangi anımda gerçekten "ben" olabildim?','Hangi alışkanlığım beni değiştiriyor, hangisi sadece rutin?','Eğer biri bugünümü dışarıdan izleseydi, ne görürdü?','Bugün kontrolüm dışında neye çok enerji harcadım?'];
+  reflQ=fallbacks[Math.floor(Math.random()*fallbacks.length)];
+  
+  // Fake delay for UX
+  await new Promise(r=>setTimeout(r,800));
+  
+  document.getElementById('reflQ').textContent=reflQ; await ss('reflq_'+TODAY(),reflQ); 
+  btn.innerHTML='✦ Rastgele Yeni Soru';btn.disabled=false;rLoading=false;
 }
 async function saveRefl(){
   const ans=document.getElementById('reflAns').value.trim(); if(!ans)return showToast('Önce bir şeyler yaz ✍');
@@ -1069,24 +1220,6 @@ function renderPast(){
   if(!entries.length){el.innerHTML='<div class="empty">Henüz yansıma kaydedilmedi.</div>';return;}
   el.innerHTML=entries.map(([date,r])=>{ const d=new Date(date+'T00:00:00'); return `<div class="past"><div class="pd">${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}</div><div class="pq">${r.q||''}</div><div class="pa">${r.a}</div></div>`; }).join('');
 }
-
-// ─── MOTIVATION ───
-let mLoading=false;
-async function genMotiv(){
-  if(mLoading)return;mLoading=true; document.getElementById('motivRefBtn').textContent='↻ ...';
-  const dayNum=Math.max(1,Math.floor((new Date(TODAY())-new Date(startDate))/86400000)+1);
-  const MSGS=['Disiplin özgürlüğe giden yoldur — ve bugün yeniden seçilir.','Küçük adımlar büyük dönüşümlerin temelidir.','Bugün yaptığın seçimler yarınki versiyonunu inşa ediyor.','Rahatsızlık büyümenin işaretidir — kaçma, büyü.'];
-  try{
-    const ctrl=new AbortController();const tid=setTimeout(()=>ctrl.abort(),5000);
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:150,system:'Sen stoacı bir koçsun.',messages:[{role:'user',content:`Gün ${dayNum}. Kısa, güçlü Türkçe motivasyon mesajı yaz.`}]})});
-    clearTimeout(tid); const data=await res.json();
-    if(data.content&&data.content[0]){ const t=data.content[0].text.trim(); document.getElementById('motivTxt').textContent=t; await ss('motiv_'+TODAY(),t); }else{throw new Error('no content');}
-  }catch{
-    const fb=MSGS[(dayNum+new Date().getHours())%MSGS.length]; document.getElementById('motivTxt').textContent=fb; await ss('motiv_'+TODAY(),fb);
-  }
-  document.getElementById('motivRefBtn').textContent='↻ Değiştir';mLoading=false;
-}
-async function refreshMotiv(){ await ss('motiv_'+TODAY(),null);genMotiv(); }
 
 // ─── NAV ───
 let curTab='bugun';
