@@ -18,7 +18,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;height:100%;}
-body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height:100vh;}
+body{display:flex;flex-direction:column;max-width:1000px; /* Genişletilmiş Ekran Boyutu */ margin:0 auto;min-height:100vh;}
 
 /* SPLASH */
 #splash{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;transition:opacity 0.5s ease;}
@@ -30,6 +30,19 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
 
 /* LAYOUT */
 .app{flex:1;display:flex;flex-direction:column;padding-bottom:76px;overflow-y:auto;}
+
+/* PC İÇİN GRID SİSTEMİ (TAM EKRAN OPTİMİZASYONU) */
+@media (min-width: 768px) {
+  .view.on {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+    padding: 14px 22px 6px;
+  }
+  .sec { padding: 0 !important; margin-bottom: 0 !important; }
+  .full-width { grid-column: 1 / -1; }
+}
 
 /* TOP BAR */
 .topbar{padding:20px 22px 12px;position:sticky;top:0;background:rgba(7,7,10,0.95);backdrop-filter:blur(20px);z-index:50;border-bottom:1px solid var(--br);}
@@ -43,7 +56,7 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
 .streak-badge{background:var(--s2);border:1px solid var(--br);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--t2);}
 
 /* NAV */
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(7,7,10,0.97);backdrop-filter:blur(24px);border-top:1px solid var(--br);display:flex;padding:8px 0 18px;z-index:100;}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:1000px;background:rgba(7,7,10,0.97);backdrop-filter:blur(24px);border-top:1px solid var(--br);display:flex;padding:8px 0 18px;z-index:100;}
 .nb{flex:1;background:none;border:none;color:var(--t3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px;font-family:'DM Sans',sans-serif;transition:color 0.2s;}
 .nb.on{color:var(--gold);}
 .ni{font-size:15px;line-height:1;}
@@ -51,75 +64,20 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
 
 /* VIEWS */
 .view{display:none;padding:14px 0 6px;animation:fi 0.2s ease;}
-.view.on{display:block;}
+.view.on{display:block;} /* Grid için media query ile eziliyor */
 @keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
 .sec{padding:0 22px;margin-bottom:18px;}
 .sh{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
 .sh-act{color:var(--gold);cursor:pointer;font-size:10px;}
 
-/* SIFIRDAN YAZILMIŞ MOTIV CARD (KESİN ÇÖZÜM) */
-.motiv-wrap {
-  margin: 0 22px 18px;
-  background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, var(--s1) 60%);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 16px;
-  padding: 24px 22px 14px;
-  position: relative;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-}
-.motiv-wrap::before {
-  content: '"';
-  position: absolute;
-  top: -15px;
-  left: 12px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 100px;
-  font-weight: 300;
-  color: rgba(201,168,76,0.08);
-  pointer-events: none;
-  line-height: 1;
-}
-.motiv-txt {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-style: italic;
-  color: #fff2c8;
-  line-height: 1.4;
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin-top: -5px; /* Yazıyı yukarı çektik */
-  margin-bottom: 16px;
-  display: block; /* Yazının serbestçe aşağı inmesini sağlar */
-  word-wrap: break-word;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-}
-.motiv-by {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid rgba(201,168,76,0.15);
-  padding-top: 12px;
-}
-.motiv-lbl {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0.7;
-}
-.motiv-refresh {
-  font-size: 11px;
-  color: var(--gold);
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-family: 'DM Sans', sans-serif;
-  transition: opacity 0.2s;
-}
-.motiv-refresh:hover {
-  opacity: 1;
-}
+/* SIFIRDAN YAZILMIŞ MOTIV CARD */
+.motiv-wrap { margin: 0 22px 18px; background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, var(--s1) 60%); border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; padding: 24px 22px 14px; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.motiv-wrap::before { content: '"'; position: absolute; top: -15px; left: 12px; font-family: 'Cormorant Garamond', serif; font-size: 100px; font-weight: 300; color: rgba(201,168,76,0.08); pointer-events: none; line-height: 1; }
+.motiv-txt { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #fff2c8; line-height: 1.4; position: relative; z-index: 1; text-align: center; margin-top: -5px; margin-bottom: 16px; display: block; word-wrap: break-word; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+.motiv-by { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,168,76,0.15); padding-top: 12px; }
+.motiv-lbl { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+.motiv-refresh { font-size: 11px; color: var(--gold); cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; transition: opacity 0.2s; }
+.motiv-refresh:hover { opacity: 1; }
 
 /* RING OVERVIEW */
 .ov{display:flex;align-items:center;gap:14px;background:var(--s1);border:1px solid var(--br);border-radius:16px;padding:16px;margin:0 22px 10px;}
@@ -130,7 +88,7 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
 .oi p{font-size:12px;color:var(--t2);}
 
 /* STAT ROW */
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:0 22px 14px;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));gap:7px;margin:0 22px 14px;}
 .stat{background:var(--s1);border:1px solid var(--br);border-radius:11px;padding:11px 8px;text-align:center;}
 .sv{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--gold);line-height:1;}
 .sl{font-size:9px;color:var(--t2);margin-top:3px;letter-spacing:0.04em;}
@@ -217,11 +175,6 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
 .sdel{color:var(--t3);cursor:pointer;padding:0 4px;font-size:15px;}
 .sdel:hover{color:var(--rd);}
 
-/* WATER */
-.wrow{display:flex;gap:5px;flex-wrap:wrap;}
-.wg{width:34px;height:34px;border-radius:8px;background:var(--s2);border:1px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;transition:all 0.2s;}
-.wg.on{background:var(--bld);border-color:var(--blb);}
-
 /* MENTAL */
 .comfort{background:var(--s1);border:1px solid var(--br);border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;margin-bottom:8px;}
 .comfort.done{border-color:var(--gb);background:var(--gd);}
@@ -242,43 +195,29 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
 /* CAREER */
 .band-big{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--gold);line-height:1;text-align:center;padding:14px 0 6px;}
 .band-sub{font-size:11px;color:var(--t2);text-align:center;margin-bottom:12px;}
-.igrid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:10px;}
+.igrid3{display:grid;grid-template-columns:repeat(auto-fit, minmax(90px, 1fr));gap:7px;margin-bottom:10px;}
 .ig{background:var(--s1);border:1px solid var(--br);border-radius:10px;padding:10px;text-align:center;}
 .igv{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);}
 .igl{font-size:9px;color:var(--t2);margin-top:2px;}
-.cert{background:var(--s1);border:1px solid var(--br);border-radius:12px;padding:13px;margin-bottom:7px;}
-.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
-.cn{font-size:14px;font-weight:500;}
-.cp{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);}
-.cbar{background:var(--s2);border-radius:3px;height:4px;overflow:hidden;}
-.cfill{height:100%;border-radius:3px;background:var(--gold);transition:width 0.4s;}
-.cctl{display:flex;gap:5px;margin-top:9px;}
-.pb{background:var(--s2);border:1px solid var(--br);border-radius:6px;color:var(--t2);font-size:11px;padding:5px 10px;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
-.pb:hover{border-color:var(--gb);color:var(--gold);}
-
-/* KPI */
-.kpi-item{background:var(--s1);border:1px solid var(--br);border-radius:12px;padding:13px;margin-bottom:7px;}
-
-/* REFLECTION */
-.rqcard{background:var(--s1);border:1px solid var(--br);border-radius:13px;padding:16px;margin-bottom:12px;}
-.rql{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);opacity:0.65;margin-bottom:8px;}
-.rqt{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;line-height:1.55;min-height:22px;}
-.past{background:var(--s1);border:1px solid var(--br);border-radius:11px;padding:13px;margin-bottom:8px;}
-.pd{font-size:10px;color:var(--t3);letter-spacing:0.1em;margin-bottom:4px;}
-.pq{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--t2);margin-bottom:6px;}
-.pa{font-size:13px;line-height:1.5;}
 
 /* CHART */
 .cw{background:var(--s1);border:1px solid var(--br);border-radius:12px;padding:14px;margin-bottom:8px;}
 .ct{font-size:10px;color:var(--t2);margin-bottom:10px;letter-spacing:0.06em;}
+
+/* FINANCE SPECIFIC */
+.fin-tot { font-family:'Cormorant Garamond',serif; font-size:48px; color:var(--gr); text-align:center; font-weight:300; margin-bottom:4px; }
+.fin-sub { font-size:11px; color:var(--t2); text-align:center; margin-bottom:16px; letter-spacing:0.1em; }
+.asset-row { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--br); padding:10px 0; }
+.asset-row:last-child { border-bottom:none; }
+.asset-name { font-size:13px; font-weight:500; color:var(--tx); }
+.asset-val { font-family:'DM Sans',sans-serif; font-size:14px; color:var(--gold); display:flex; align-items:center; gap:8px;}
+.asset-input { width:80px; padding:6px; background:var(--s2); border:1px solid var(--br); border-radius:6px; color:var(--tx); text-align:right;}
 
 /* MISC */
 .spin{display:inline-block;width:10px;height:10px;border:1.5px solid var(--t3);border-top-color:var(--gold);border-radius:50%;animation:sp 0.7s linear infinite;margin-right:4px;vertical-align:middle;}
 @keyframes sp{to{transform:rotate(360deg);}}
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-60px);background:var(--s2);border:1px solid var(--br2);border-radius:20px;padding:7px 16px;font-size:12px;z-index:300;transition:transform 0.25s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;pointer-events:none;}
 .toast.show{transform:translateX(-50%) translateY(0);}
-.empty{font-size:12px;color:var(--t3);font-style:italic;padding:6px 0;}
-.tag{display:inline-flex;align-items:center;background:var(--gd);border:1px solid var(--gb);border-radius:20px;padding:3px 9px;font-size:10px;color:var(--gold);}
 </style>
 </head>
 <body>
@@ -304,7 +243,7 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
     </div>
   </div>
 
-  <div class="motiv-wrap" style="margin-top:16px;">
+  <div class="motiv-wrap full-width" style="margin-top:16px;">
     <div class="motiv-txt" id="motivTxt"><span class="spin"></span>Yükleniyor...</div>
     <div class="motiv-by">
       <span class="motiv-lbl">✦ Günün Sözü</span>
@@ -312,7 +251,7 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
     </div>
   </div>
 
-  <div class="ov">
+  <div class="ov full-width">
     <div class="rw">
       <svg width="72" height="72" viewBox="0 0 72 72">
         <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="5"/>
@@ -328,13 +267,13 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
     </div>
   </div>
 
-  <div class="stats">
+  <div class="stats full-width">
     <div class="stat"><div class="sv" id="stDays">1</div><div class="sl">Toplam Gün</div></div>
     <div class="stat"><div class="sv" id="stStreak">0</div><div class="sl">Max Seri 🔥</div></div>
     <div class="stat"><div class="sv" id="stComp">0%</div><div class="sl">6M Ort.</div></div>
   </div>
 
-  <div class="sec" style="margin-bottom:14px;">
+  <div class="sec full-width" style="margin-bottom:14px;">
     <div class="sh">6 Aylık Harita</div>
     <div class="heatmap-wrap"><div class="heatmap" id="heatmap"></div></div>
     <div style="display:flex;align-items:center;gap:6px;margin-top:8px;padding:0 2px;">
@@ -350,11 +289,12 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
     </div>
   </div>
 
-  <div style="display:flex;gap:8px;padding:0 22px;margin-bottom:14px;overflow-x:auto;">
+  <div class="full-width" style="display:flex;gap:8px;padding:0 22px;margin-bottom:14px;overflow-x:auto;">
     <button class="btn sm on" id="tab-bugun" onclick="switchTab('bugun')">Bugün</button>
     <button class="btn sm" id="tab-fizik" onclick="switchTab('fizik')">Fizik</button>
     <button class="btn sm" id="tab-mental" onclick="switchTab('mental')">Mental</button>
     <button class="btn sm" id="tab-kariyer" onclick="switchTab('kariyer')">Kariyer</button>
+    <button class="btn sm" id="tab-finans" onclick="switchTab('finans')">Finans</button>
     <button class="btn sm" id="tab-yansi" onclick="switchTab('yansi')">Yansıma</button>
   </div>
 
@@ -366,9 +306,8 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
     <div class="sec">
       <div class="sh">Su · <span id="wcnt">0</span>/8 bardak</div>
       <div class="wrow" id="waterRow"></div>
-    </div>
-    <div class="sec">
-      <div class="sh">Günlük Hedefler <span class="sh-act" onclick="addGoal()">+ Ekle</span></div>
+      
+      <div class="sh" style="margin-top:16px;">Günlük Hedefler <span class="sh-act" onclick="addGoal()">+ Ekle</span></div>
       <div class="irow"><input class="inp" id="goalIn" placeholder="Hedef yaz..." onkeydown="if(event.key==='Enter')addGoal()"><button class="btn" onclick="addGoal()">+</button></div>
       <div id="goalList"></div>
     </div>
@@ -386,18 +325,17 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
         <div class="ml"><label>Ağırlık</label><div class="unit-inp"><input class="inp" id="inW" type="number" step="0.1" placeholder="81.0"><span>kg</span></div></div>
         <div class="ml"><label>Yağ Oranı</label><div class="unit-inp"><input class="inp" id="inBF" type="number" step="0.1" placeholder="18.0"><span>%</span></div></div>
       </div>
-      <button class="btn gold" style="width:100%;" onclick="savePhys()">Kaydet</button>
-    </div>
-    <div class="sec">
-      <div class="sh">Ağırlık Grafiği (30 gün)</div>
-      <div class="cw"><canvas id="wChart" height="120"></canvas></div>
-    </div>
-    <div class="sec">
+      <button class="btn gold" style="width:100%; margin-bottom:12px;" onclick="savePhys()">Kaydet</button>
+
       <div class="sh">Anti-İnflamasyon Protokolü <span id="infScore" style="color:var(--gold);font-size:9px;letter-spacing:0.1em;"></span></div>
       <div class="igrid" id="ifGrid"></div>
       <div class="inf-tip" id="infTip">Beslenme verisi giriniz.</div>
     </div>
+
     <div class="sec">
+      <div class="sh">Ağırlık Grafiği (30 gün)</div>
+      <div class="cw"><canvas id="wChart" height="120"></canvas></div>
+
       <div class="sh">Antrenman Logu <span class="sh-act" onclick="clearSets()">Temizle</span></div>
       <div class="setlist" id="setList"></div>
       <input class="inp" id="inEx" placeholder="Hareket (Bench Press, Squat...)" style="margin-bottom:6px;">
@@ -414,21 +352,22 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
   <div class="view" id="view-mental">
     <div class="sec">
       <div class="sh">Sabah — Stoacı Niyet</div>
-      <div class="card">
+      <div class="card" style="margin-bottom:12px;">
         <div style="font-size:11px;color:var(--t2);margin-bottom:8px;font-style:italic;">"Bugün kontrolümde olan nedir?"</div>
         <textarea class="ta" id="morningIntent" placeholder="Bugün odaklanacağım şey..." style="min-height:75px;background:var(--s2);"></textarea>
         <button class="btn fw" onclick="saveMental('intent')">Kaydet</button>
       </div>
-    </div>
-    <div class="sec">
-      <div class="sh">Konfor Alanı İhlali</div>
-      <div class="comfort" id="comfortBox" onclick="toggleComfort()">
-        <div class="cico" id="cIco">🔥</div>
-        <div class="ci"><h4 id="cTitle">Bugünün Zorluğu</h4><p id="cSub">Planlı rahatsızlık — işaretle</p></div>
+
+      <div class="sh">Kitap Okuma (Sayfa Takibi)</div>
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <span style="font-size:13px; color:var(--tx);">📖 Toplam Okunan:</span>
+          <span style="color:var(--gold); font-weight:bold;" id="totalBooksPages">0 Syf</span>
+        </div>
+        <div class="irow"><input class="inp" id="pageIn" type="number" placeholder="Bugün kaç sayfa okudun?"><button class="btn" onclick="addPages()">+ Ekle</button></div>
       </div>
-      <input class="inp" id="comfortDesc" placeholder="Ne yaptın? (soğuk duş, yabancıyla konuştum...)" style="margin-bottom:6px;">
-      <button class="btn fw" onclick="saveMental('comfort')">Kaydet</button>
     </div>
+
     <div class="sec">
       <div class="sh">Gölge Çalışması</div>
       <div class="card" style="margin-bottom:8px;">
@@ -439,9 +378,8 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
         <button class="btn fw" onclick="addTrigger()">Ekle</button>
       </div>
       <div class="tlist" id="tList"></div>
-    </div>
-    <div class="sec">
-      <div class="sh">Akşam — Stoacı Değerlendirme</div>
+
+      <div class="sh" style="margin-top:12px;">Akşam — Stoacı Değerlendirme</div>
       <div class="card">
         <div style="font-size:11px;color:var(--t2);margin-bottom:9px;">Kontrolüm dışına ne kadar enerji harcadım?</div>
         <div class="stoic-btns" id="stoicBtns">
@@ -474,12 +412,31 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
       <div class="cw" style="margin-top:8px;"><div class="ct">Mock Skor Geçmişi</div><canvas id="ieltsChart" height="100"></canvas></div>
     </div>
     <div class="sec">
-      <div class="sh">Sertifikalar <span class="sh-act" onclick="newCert()">+ Ekle</span></div>
-      <div id="certList"></div>
-    </div>
-    <div class="sec">
       <div class="sh">6 Aylık KPI'lar</div>
       <div id="kpiList"></div>
+    </div>
+  </div>
+
+  <div class="view" id="view-finans">
+    <div class="sec">
+      <div class="sh">Toplam Net Değer (TRY)</div>
+      <div class="card" style="margin-bottom:12px;">
+        <div class="fin-tot" id="totalNetWorth">₺0</div>
+        <div class="fin-sub">Güncel Dolar Kuru: <input type="number" id="usdRate" value="32.50" style="width:50px; background:transparent; border:none; border-bottom:1px solid var(--gold); color:var(--gold); font-family:'DM Sans';"> ₺</div>
+        <div class="cw" style="padding:10px;"><canvas id="financeLineChart" height="120"></canvas></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sh">Portföy Dağılımı (Pasta Grafik)</div>
+      <div class="card" style="margin-bottom:12px; display:flex; justify-content:center; align-items:center;">
+        <canvas id="financePieChart" height="220" style="max-height:220px;"></canvas>
+      </div>
+
+      <div class="sh">Varlıkları Güncelle & Para Ekle</div>
+      <div class="card" id="assetsContainer">
+        </div>
+      <button class="btn gold fw" onclick="saveFinance()">Güncelle ve Grafiğe Ekle ✓</button>
     </div>
   </div>
 
@@ -499,12 +456,14 @@ body{display:flex;flex-direction:column;max-width:480px;margin:0 auto;min-height
     </div>
   </div>
 
-</div><div class="nav">
+</div>
+
+<div class="nav">
   <button class="nb on" data-t="bugun" onclick="go('bugun')"><span class="ni">◎</span><span class="nl">Bugün</span></button>
   <button class="nb" data-t="fizik" onclick="go('fizik')"><span class="ni">◈</span><span class="nl">Fizik</span></button>
   <button class="nb" data-t="mental" onclick="go('mental')"><span class="ni">◇</span><span class="nl">Mental</span></button>
   <button class="nb" data-t="kariyer" onclick="go('kariyer')"><span class="ni">◉</span><span class="nl">Kariyer</span></button>
-  <button class="nb" data-t="yansi" onclick="go('yansi')"><span class="ni">◌</span><span class="nl">Yansıma</span></button>
+  <button class="nb" data-t="finans" onclick="go('finans')"><span class="ni">💰</span><span class="nl">Finans</span></button>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -536,26 +495,32 @@ const TODAY=()=>new Date().toISOString().split('T')[0];
 // ─── STATE ───
 let habits={},streaks={},water=0,goals=[],physData={},mentalData={},inflamFoods={},sets=[];
 let ielts={currentBand:0,targetBand:7.5,mockScores:[],dailyVocab:{}};
-let certs=[{name:'Six Sigma Yellow Belt',pct:0}];
-let kpis=[{id:'books',n:'📚 Kitap Okuma',target:'12 kitap',pct:0},{id:'phys',n:'💪 Fiziksel Hedef',target:'78 kg hedef',pct:0},{id:'ielts',n:'🌍 IELTS Hedefi',target:'Band 7.5',pct:0},{id:'social',n:'👥 Sosyal Genişleme',target:'Yeni bağlantılar',pct:0}];
+let kpis=[{id:'phys',n:'💪 Fiziksel Hedef',target:'78 kg hedef',pct:0},{id:'ielts',n:'🌍 IELTS Hedefi',target:'Band 7.5',pct:0},{id:'social',n:'👥 Sosyal Genişleme',target:'Yeni bağlantılar',pct:0}];
 let reflections={},stoicVal=0,reflQ='';
 let startDate=null;
-let wChart=null,iChart=null;
+let wChart=null, iChart=null, finLineChart=null, finPieChart=null;
 
-// ─── STORAGE (DÜZELTİLDİ: Tarayıcı hafızasını kullanır) ───
+// Yeni Modüller
+let totalPages = 0;
+// Finans Başlangıç Portföyü
+let portfolio = {
+  usd: { URA: 433, CCJ: 242, DRIV: 171, SPY: 366 },
+  try: { IPJ: 17000, FPG: 6500 }
+};
+let nwHistory = [];
+
+// ─── STORAGE ───
 async function sg(k){try{const r=localStorage.getItem(k);return r?JSON.parse(r):null;}catch{return null;}}
 async function ss(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 
 // ─── INIT ───
 async function init(){
-  // Splash
   document.getElementById('splashFill').style.width='100%';
   await new Promise(r=>setTimeout(r,1800));
   document.getElementById('splash').classList.add('hide');
   document.getElementById('appWrap').style.display='flex';
   document.getElementById('appWrap').style.flexDirection='column';
 
-  // Start date
   let sd=await sg(START_DATE_KEY);
   if(!sd){sd=TODAY();await ss(START_DATE_KEY,sd);}
   startDate=sd;
@@ -574,12 +539,17 @@ async function init(){
   inflamFoods=await sg('inf_'+td)||{};
   sets=await sg('sets_'+td)||[];
   ielts=await sg('ielts')||{currentBand:0,targetBand:7.5,mockScores:[],dailyVocab:{}};
-  certs=await sg('certs')||[{name:'Six Sigma Yellow Belt',pct:0}];
-  kpis=await sg('kpis')||[{id:'books',n:'📚 Kitap Okuma',target:'12 kitap',pct:0},{id:'phys',n:'💪 Fiziksel Hedef',target:'78 kg hedef',pct:0},{id:'ielts',n:'🌍 IELTS Hedefi',target:'Band 7.5',pct:0},{id:'social',n:'👥 Sosyal Genişleme',target:'Yeni bağlantılar',pct:0}];
+  kpis=await sg('kpis')||kpis;
   reflections=await sg('reflections')||{};
   stoicVal=mentalData.eveningScore||0;
+  totalPages=await sg('totalPages')||0;
+  
+  // Finans Load
+  let savedPort = await sg('portfolio');
+  if(savedPort) portfolio = savedPort;
+  let savedHist = await sg('nwHistory');
+  if(savedHist) nwHistory = savedHist;
 
-  // Day counter
   const dayNum=Math.max(1,Math.floor((new Date(td)-new Date(startDate))/(86400000))+1);
   document.getElementById('dayCtr').textContent=`Gün ${dayNum}`;
 
@@ -587,20 +557,23 @@ async function init(){
   buildHeatmap();
   buildWChart();
   buildIChart();
+  
+  // İlk çalıştırmada finans grafiklerini çiz
+  renderFinanceInputs();
+  buildFinanceCharts();
 
-  // Motiv — fallback hemen göster
+  // Motiv
   const MOTIV_FB=['Disiplin özgürlüğe giden yoldur — ve bugün yeniden seçilir.','Küçük adımlar büyük dönüşümlerin temelidir.','Bugün yaptığın seçimler yarınki versiyonunu inşa ediyor.','Rahatsızlık büyümenin işaretidir — kaçma, büyü.','Her sabah yeni bir sayfa — onu iyi yaz.','Kontrol edebildiğine odaklan, gerisini bırak.','Mükemmel değil, tutarlı ol.'];
   const motivFb=MOTIV_FB[new Date().getDay()%MOTIV_FB.length];
   const cm=await sg('motiv_'+td);
-  if(cm){document.getElementById('motivTxt').textContent=cm;}
-  else{document.getElementById('motivTxt').textContent=motivFb;genMotiv();}
+  if(cm) document.getElementById('motivTxt').textContent=cm;
+  else { document.getElementById('motivTxt').textContent=motivFb; genMotiv(); }
 
-  // Refl Q — fallback hemen
-  const REFL_FB=['Bugün hangi anımda gerçekten "ben" olabildim?','Hangi alışkanlığım beni değiştiriyor, hangisi sadece rutin?','Eğer biri bugünümü dışarıdan izleseydi ne görürdü?','6 ay sonraki ben bugünkü kararlarımı nasıl değerlendirecek?','Bugün hangi korkumla yüzleştim ya da kaçtım?'];
+  // Yansıma
   const cq=await sg('reflq_'+td);
-  if(cq){reflQ=cq;document.getElementById('reflQ').textContent=cq;}
-  else{
-    reflQ=REFL_FB[new Date().getDay()%REFL_FB.length];
+  if(cq) { reflQ=cq; document.getElementById('reflQ').textContent=cq; }
+  else {
+    reflQ='Bugün hangi anımda gerçekten "ben" olabildim?';
     document.getElementById('reflQ').textContent=reflQ;
     genRefl();
   }
@@ -615,12 +588,137 @@ async function init(){
   renderStoicBtns();
   if(physData.weight){document.getElementById('inW').value=physData.weight;updateWProg(physData.weight);}
   if(physData.bf)document.getElementById('inBF').value=physData.bf;
+  document.getElementById('totalBooksPages').textContent = totalPages + ' Syf';
 }
 
 function renderAll(){
   renderHabits();renderWater();renderGoals();renderInflam();renderSets();
-  renderMental();renderIelts();renderCerts();renderKPIs();renderPast();
+  renderMental();renderIelts();renderKPIs();renderPast();
   updateOverview();updateStats();
+}
+
+// ─── KİTAP SAYFA TAKİBİ ───
+async function addPages() {
+  let p = parseInt(document.getElementById('pageIn').value);
+  if(isNaN(p) || p <= 0) return;
+  totalPages += p;
+  await ss('totalPages', totalPages);
+  document.getElementById('totalBooksPages').textContent = totalPages + ' Syf';
+  document.getElementById('pageIn').value = '';
+  showToast(`+${p} sayfa eklendi ✓`);
+}
+
+// ─── FİNANS MODÜLÜ ───
+function renderFinanceInputs() {
+  let html = '';
+  Object.keys(portfolio.usd).forEach(k => {
+    html += `<div class="asset-row"><span class="asset-name">${k}</span><div class="asset-val">$ <input type="number" id="ast_${k}" class="asset-input" value="${portfolio.usd[k]}"></div></div>`;
+  });
+  Object.keys(portfolio.try).forEach(k => {
+    html += `<div class="asset-row"><span class="asset-name">${k}</span><div class="asset-val">₺ <input type="number" id="ast_${k}" class="asset-input" value="${portfolio.try[k]}"></div></div>`;
+  });
+  document.getElementById('assetsContainer').innerHTML = html;
+}
+
+async function saveFinance() {
+  // Inputlardan yeni değerleri al
+  Object.keys(portfolio.usd).forEach(k => {
+    portfolio.usd[k] = parseFloat(document.getElementById(`ast_${k}`).value) || 0;
+  });
+  Object.keys(portfolio.try).forEach(k => {
+    portfolio.try[k] = parseFloat(document.getElementById(`ast_${k}`).value) || 0;
+  });
+
+  await ss('portfolio', portfolio);
+
+  // Toplam net değeri hesapla ve History'e kaydet
+  let rate = parseFloat(document.getElementById('usdRate').value) || 32.50;
+  let totalUSD = Object.values(portfolio.usd).reduce((a, b) => a + b, 0);
+  let totalTRY = Object.values(portfolio.try).reduce((a, b) => a + b, 0);
+  let finalNetWorth = Math.round((totalUSD * rate) + totalTRY);
+
+  // Bugüne ait kayıt varsa güncelle, yoksa yeni ekle
+  let td = TODAY();
+  let existingIndex = nwHistory.findIndex(h => h.date === td);
+  if(existingIndex >= 0) {
+    nwHistory[existingIndex].val = finalNetWorth;
+  } else {
+    nwHistory.push({ date: td, val: finalNetWorth });
+  }
+  await ss('nwHistory', nwHistory);
+
+  showToast('Varlıklar Güncellendi ✓');
+  buildFinanceCharts();
+}
+
+function buildFinanceCharts() {
+  let rate = parseFloat(document.getElementById('usdRate').value) || 32.50;
+  
+  // 1. TOPLAM DEĞER HESAPLA
+  let totalUSD = Object.values(portfolio.usd).reduce((a, b) => a + b, 0);
+  let totalTRY = Object.values(portfolio.try).reduce((a, b) => a + b, 0);
+  let finalNetWorth = Math.round((totalUSD * rate) + totalTRY);
+  
+  // Binlik ayraçlı yazdırma
+  document.getElementById('totalNetWorth').textContent = '₺' + finalNetWorth.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  // 2. PIE CHART DAĞILIMI
+  let pLabels = [...Object.keys(portfolio.usd), ...Object.keys(portfolio.try)];
+  let pData = [
+    ...Object.values(portfolio.usd).map(v => Math.round(v * rate)), 
+    ...Object.values(portfolio.try)
+  ];
+  let pColors = ['#5ba3d9', '#c9a84c', '#5dba7e', '#e0705d', '#a37ccc', '#d4a373'];
+
+  let ctxPie = document.getElementById('financePieChart').getContext('2d');
+  if(finPieChart) finPieChart.destroy();
+  finPieChart = new Chart(ctxPie, {
+    type: 'pie',
+    data: {
+      labels: pLabels,
+      datasets: [{ data: pData, backgroundColor: pColors, borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { color: '#8a8680', font: {size: 11} } } }
+    }
+  });
+
+  // 3. LINE CHART (GEÇMİŞ)
+  // Eğer hiç history yoksa veya tek data varsa sahte bi line çizelim güzel dursun
+  let lineLabels = nwHistory.map(h => {
+    let d = new Date(h.date);
+    return d.getDate() + '/' + MONTHS[d.getMonth()].slice(0,3);
+  });
+  let lineData = nwHistory.map(h => h.val);
+
+  // Eğer tablo boşsa sadece bugünü bas
+  if(nwHistory.length === 0) {
+    lineLabels = ['Bugün']; lineData = [finalNetWorth];
+  }
+
+  let ctxLine = document.getElementById('financeLineChart').getContext('2d');
+  if(finLineChart) finLineChart.destroy();
+  finLineChart = new Chart(ctxLine, {
+    type: 'line',
+    data: {
+      labels: lineLabels,
+      datasets: [{
+        data: lineData,
+        borderColor: '#5dba7e',
+        backgroundColor: 'rgba(93,186,126,0.1)',
+        fill: true, tension: 0.4, pointBackgroundColor: '#5dba7e', pointRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#7c7872', font: {size: 9} } },
+        y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#7c7872', font: {size: 9} } }
+      }
+    }
+  });
 }
 
 // ─── HEATMAP ───
@@ -692,7 +790,6 @@ async function updateStats(){
   document.getElementById('stStreak').textContent=maxS;
   document.getElementById('topStreak').textContent='🔥 '+maxS;
 
-  // 6m avg completion
   let total=0,days=0;
   const td=new Date();
   for(let i=0;i<180;i++){
@@ -731,7 +828,7 @@ async function toggleH(id){
   showToast(habits[id]?'✓ Tamamlandı':'Geri alındı');
 }
 
-// ─── WATER ───
+// ─── WATER & GOALS ───
 function renderWater(){
   const row=document.getElementById('waterRow');row.innerHTML='';
   document.getElementById('wcnt').textContent=water;
@@ -743,7 +840,6 @@ function renderWater(){
   }
 }
 
-// ─── GOALS ───
 function renderGoals(){
   const el=document.getElementById('goalList');el.innerHTML='';
   if(!goals.length){el.innerHTML='<div class="empty">Henüz hedef yok.</div>';return;}
@@ -800,7 +896,7 @@ async function buildWChart(){
   ]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7c7872',font:{size:9}}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7c7872',font:{size:9}},min:75,max:85}}}});
 }
 
-// ─── INFLAMMATION ───
+// ─── INFLAMMATION & SETS ───
 function renderInflam(){
   const g=document.getElementById('ifGrid');g.innerHTML='';
   let score=0;
@@ -816,7 +912,6 @@ function renderInflam(){
   document.getElementById('infTip').textContent=tips[score];
 }
 
-// ─── SETS ───
 function renderSets(){
   const el=document.getElementById('setList');el.innerHTML='';
   let total=0;
@@ -927,28 +1022,7 @@ function buildIChart(){
     ]
   },options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7c7872',font:{size:9}}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{color:'#7c7872',font:{size:9}},min:0,max:9}}}});
 }
-function renderCerts(){
-  const el=document.getElementById('certList');el.innerHTML='';
-  certs.forEach((c,i)=>{
-    const d=document.createElement('div');d.className='cert';
-    d.innerHTML=`<div class="ch"><span class="cn">🏆 ${c.name}</span><span class="cp" id="cp${i}">${c.pct}%</span></div>
-      <div class="cbar"><div class="cfill" id="cf${i}" style="width:${c.pct}%"></div></div>
-      <div class="cctl">
-        <button class="pb" onclick="adjC(${i},-10)">−10%</button>
-        <button class="pb" onclick="adjC(${i},5)">+5%</button>
-        <button class="pb" onclick="adjC(${i},10)">+10%</button>
-      </div>`;
-    el.appendChild(d);
-  });
-}
-async function adjC(i,d){
-  certs[i].pct=Math.min(100,Math.max(0,certs[i].pct+d));
-  await ss('certs',certs);renderCerts();
-}
-async function newCert(){
-  const n=prompt('Sertifika adı:');if(!n)return;
-  certs.push({name:n,pct:0});await ss('certs',certs);renderCerts();
-}
+
 function renderKPIs(){
   const el=document.getElementById('kpiList');el.innerHTML='';
   kpis.forEach((k,i)=>{
@@ -979,18 +1053,17 @@ async function genRefl(){
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       model:'claude-sonnet-4-20250514',max_tokens:200,
-      system:'Sen bir mindfulness ve kişisel gelişim koçusun. Kullanıcı: Endüstri Mühendisliği öğrencisi, stoacı disiplin, shadow work, 81→78kg hedefi, IELTS 7.5 hedefi, sosyal genişleme çalışıyor.',
-      messages:[{role:'user',content:`Gün ${dayNum}. Bugün ${done} alışkanlık tamamlandı. Bu noktada kullanıcı için çok özgün, derinlemesine, tek cümlelik Türkçe yansıma sorusu yaz. Soru işaretiyle bitsin. Sadece soruyu yaz.`}]
+      system:'Sen bir mindfulness koçusun.',
+      messages:[{role:'user',content:`Gün ${dayNum}. Bugün ${done} alışkanlık yapıldı. Tek cümlelik Türkçe özgün yansıma sorusu yaz.`}]
     })});
     const data=await res.json();
     reflQ=data.content[0].text.trim();
-    document.getElementById('reflQ').textContent=reflQ;
-    await ss('reflq_'+TODAY(),reflQ);
   }catch{
-    const fallbacks=['Bugün en çok hangi anımda gerçekten "ben" olabildim?','Hangi alışkanlığım beni değiştiriyor, hangisi sadece rutin?','Eğer biri bugünümü dışarıdan izleseydi, ne görürdü?','6 ay sonraki ben bugünkü kararlarımı nasıl değerlendirecek?'];
+    const fallbacks=['Bugün en çok hangi anımda gerçekten "ben" olabildim?','Hangi alışkanlığım beni değiştiriyor, hangisi sadece rutin?','Eğer biri bugünümü dışarıdan izleseydi, ne görürdü?'];
     reflQ=fallbacks[Math.floor(Math.random()*fallbacks.length)];
-    document.getElementById('reflQ').textContent=reflQ;
   }
+  document.getElementById('reflQ').textContent=reflQ;
+  await ss('reflq_'+TODAY(),reflQ);
   btn.innerHTML='✦ Claude\'dan yeni yansıma sorusu';btn.disabled=false;rLoading=false;
 }
 async function saveRefl(){
@@ -1015,13 +1088,13 @@ async function genMotiv(){
   if(mLoading)return;mLoading=true;
   document.getElementById('motivRefBtn').textContent='↻ ...';
   const dayNum=Math.max(1,Math.floor((new Date(TODAY())-new Date(startDate))/86400000)+1);
-  const MSGS=['Disiplin özgürlüğe giden yoldur — ve bugün yeniden seçilir.','Küçük adımlar büyük dönüşümlerin temelidir.','Bugün yaptığın seçimler yarınki versiyonunu inşa ediyor.','Rahatsızlık büyümenin işaretidir — kaçma, büyü.','Her sabah yeni bir sayfa — onu iyi yaz.','Kontrol edebildiğine odaklan, gerisini bırak.','Mükemmel değil, tutarlı ol.','Çelik irade günde bir kez seçilir — o an şimdi.'];
+  const MSGS=['Disiplin özgürlüğe giden yoldur — ve bugün yeniden seçilir.','Küçük adımlar büyük dönüşümlerin temelidir.','Bugün yaptığın seçimler yarınki versiyonunu inşa ediyor.','Rahatsızlık büyümenin işaretidir — kaçma, büyü.'];
   try{
     const ctrl=new AbortController();const tid=setTimeout(()=>ctrl.abort(),5000);
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,body:JSON.stringify({
       model:'claude-sonnet-4-20250514',max_tokens:150,
-      system:'Sen stoacı, disiplinli bir kişisel gelişim rehberisin. Her mesajın farklı, beklenmedik, güçlü olmalı.',
-      messages:[{role:'user',content:`Gün ${dayNum}. EM öğrencisi, stoacılık, fiziksel dönüşüm, IELTS çalışıyor. Kısa, güçlü, 1-2 cümle Türkçe motivasyon mesajı. Tırnak işareti kullanma. Klişe olma.`}]
+      system:'Sen stoacı bir koçsun.',
+      messages:[{role:'user',content:`Gün ${dayNum}. Kısa, güçlü Türkçe motivasyon mesajı yaz.`}]
     })});
     clearTimeout(tid);
     const data=await res.json();
@@ -1051,9 +1124,15 @@ function go(tab){
   document.querySelector(`[data-t="${tab}"]`).classList.add('on');
   const tabBtn=document.getElementById('tab-'+tab);if(tabBtn)tabBtn.classList.add('on');
   curTab=tab;
+  
   if(tab==='fizik'){renderInflam();renderSets();buildWChart();}
   if(tab==='mental')renderTriggers();
-  if(tab==='kariyer'){renderIelts();renderCerts();renderKPIs();buildIChart();}
+  if(tab==='kariyer'){renderIelts();renderKPIs();buildIChart();}
+  if(tab==='finans'){
+      // Dolar kuru varsayılanı vb..
+      document.getElementById('usdRate').addEventListener('input', buildFinanceCharts);
+      buildFinanceCharts(); 
+  }
   if(tab==='yansi')renderPast();
 }
 function switchTab(tab){go(tab);}
