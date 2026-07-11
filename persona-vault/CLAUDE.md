@@ -13,3 +13,7 @@ Bu klasörde çalışırken aşağıdaki kurallara uy:
 4. Persona'nın kişiliğini `Persona.md` dışında değiştirme — kullanıcı
    onaylamadan kimliği/ton'u kendiliğinden revize etme.
 5. Not formatı: `Memory/_format.md` dosyasındaki şablonu takip et.
+6. `Kaynaklar/` klasörü, kullanıcının eklediği referans metinleri (video/
+   podcast transkriptleri, makaleler) içerir — bkz. `Kaynaklar/README.md`.
+   Konuşma bu konulardan birine değdiğinde ilgili dosyaya bakabilirsin,
+   ama bunları ezbere okuyup üzerine konuşma yapmak zorunda değilsin.
